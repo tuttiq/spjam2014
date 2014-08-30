@@ -14,7 +14,7 @@ public class ObjectsBehaviour : MonoBehaviour {
 		return GameStateBehaviour.gameState;
 	}
 
-	protected void Start() {
+	protected virtual void Start() {
 		actualState = GameStateBehaviour.STATES.Happy;
 		previousState = GameStateBehaviour.STATES.Happy;
 		animator = gameObject.GetComponent<Animator>();
