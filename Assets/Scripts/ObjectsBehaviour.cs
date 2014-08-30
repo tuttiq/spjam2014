@@ -20,19 +20,25 @@ public class ObjectsBehaviour : MonoBehaviour {
 		animator = gameObject.GetComponent<Animator>();
 	}
 	
+	protected void Update () {
+		CheckIfStateChanged();
+	}
+	
 	// Update is called once per frame
-	protected void UpdateObject () {
+	protected void CheckIfStateChanged () {
 		actualState = GameStateBehaviour.gameState;
 		
 		if (actualState != previousState){
-			// Debug.Log("prevStates: " + previousState + " actualState: " + actualState);
-			ChangeState();
+			animator.SetTrigger("ChangeState");
+			if (actualState == GameStateBehaviour.STATES.Happy) {
+				ChangedToHappy();
+			} else {
+				ChangedToSad();
+			}
 			previousState = actualState;
 		}
 	}
 	
-	protected virtual void ChangeState(){
-		Debug.Log(gameObject.name + " Changing State " + actualState);
-		animator.SetTrigger("ChangeState");
-	}	
+	protected virtual void ChangedToHappy() {}
+	protected virtual void ChangedToSad() {}
 }

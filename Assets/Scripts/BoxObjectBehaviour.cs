@@ -2,25 +2,11 @@
 using System.Collections;
 
 public class BoxObjectBehaviour : ObjectsBehaviour {
-	private bool interactable;
-
-	// Use this for initialization
-	void Start () {
-		base.Start ();
+	protected override void ChangedToHappy(){
+		rigidbody2D.isKinematic = true;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		UpdateObject ();
-	}
-
-	protected override void ChangeState(){
-		base.ChangeState();
-		if (currentState () == GameStateBehaviour.STATES.Happy) {
-			rigidbody2D.isKinematic = true;
-		}
-		else {
-			rigidbody2D.isKinematic = false;
-		}
+	protected override void ChangedToSad() {
+		rigidbody2D.isKinematic = false;
 	}
 }
