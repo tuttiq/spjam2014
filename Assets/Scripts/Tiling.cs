@@ -26,7 +26,7 @@ public class Tiling : MonoBehaviour {
 	void Update () {
 		if(!HasLeftTile || !HasRightTile){
 
-			float left = _cam.ScreenToWorldPoint(new Vector3(-Screen.width/2.0f,0,0)).x;
+			//float left = _cam.ScreenToWorldPoint(new Vector3(-Screen.width/2.0f,0,0)).x;
 
 			float screenRatio = (float)Screen.width/(float)Screen.height;
 
