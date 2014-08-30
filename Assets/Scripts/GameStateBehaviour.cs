@@ -24,6 +24,11 @@ public class GameStateBehaviour : MonoBehaviour {
 
 			//Debug.Log("gameState: " + gameState);
 		}
+		
+		if (Input.GetKeyDown(KeyCode.R)){
+			Application.LoadLevel(0);
+		}
+		
 	}	
 	
 }
