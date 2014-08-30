@@ -4,29 +4,34 @@ using System.Collections;
 public class ObjectsBehaviour : MonoBehaviour {
 
 	// Use this for initialization
-	private int previousState;
-	private int actualState;
-	private Animator animator;
-	
-	void Start() {
-		actualState = 1;
-		previousState = 1;
+	protected GameStateBehaviour.STATES previousState;
+	protected GameStateBehaviour.STATES actualState;
+
+	protected Animator animator;
+
+	protected GameStateBehaviour.STATES currentState()
+	{
+		return GameStateBehaviour.gameState;
+	}
+
+	protected void Start() {
+		actualState = GameStateBehaviour.STATES.Happy;
+		previousState = GameStateBehaviour.STATES.Happy;
 		animator = gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected void UpdateObject () {
 		actualState = GameStateBehaviour.gameState;
 		
-		if(actualState != previousState){
-			Debug.Log("prevStates: " + previousState + " actualState: " + actualState);
+		if (actualState != previousState){
+			// Debug.Log("prevStates: " + previousState + " actualState: " + actualState);
 			ChangeState();
 			previousState = actualState;
 		}
-		
 	}
 	
-	void ChangeState(){
+	protected virtual void ChangeState(){
 		Debug.Log(gameObject.name + " Changing State " + actualState);
 		animator.SetTrigger("ChangeState");
 	}	
