@@ -9,10 +9,9 @@ public class DeadlyCollision : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.gameObject == GameManager.Instance.CurrentPlayer) 
+		if (other.gameObject.tag == "Player" ) 
 		{
-			DestroyObject (other.gameObject);
-			GameManager.Instance.Respaw();
+			Application.LoadLevel(0);
 		}
 	}
 
