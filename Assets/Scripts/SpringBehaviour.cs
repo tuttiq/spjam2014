@@ -8,13 +8,14 @@ public class SpringBehaviour : MonoBehaviour {
 	public bool compress;
 	public float yScaleLimit;
 	public float yOffset;
-	// Use this for initialization
+	// Use this for initialization	
 	void Start () {
 		compress = false;
 	}
 	
 	// Update is called once per frame
-	void Update () {				
+	void Update () {		
+									
 		if(compress && spring.transform.localScale.y > yScaleLimit){			
 			spring.transform.localScale = new Vector3(spring.transform.localScale.x,
 												 spring.transform.localScale.y - speed,
@@ -38,5 +39,11 @@ public class SpringBehaviour : MonoBehaviour {
 			                                 spring.transform.position.y+yOffset,
 			                                 transform.position.z);
 		 }
+	}
+	
+	void OnCollisionStay2D(Collision2D collision){		
+		if(collision.gameObject.tag == "Player" && GameStateBehaviour.gameState == GameStateBehaviour.STATES.Sad){
+			compress = true;		
+		}
 	}
 }

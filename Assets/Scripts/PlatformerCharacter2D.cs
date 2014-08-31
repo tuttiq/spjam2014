@@ -28,10 +28,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 		// Setting up references.
 		groundCheck = transform.Find("GroundCheck");
 		ceilingCheck = transform.Find("CeilingCheck");
-		anim = GetComponent<Animator>();
-		gameState = GameObject.FindWithTag("GameManager").GetComponent<GameStateBehaviour>();
+		anim = GetComponent<Animator>();	
 	}
 
+	void Start(){
+		gameState = GameObject.FindWithTag("GameManager").GetComponent<GameStateBehaviour>();
+	}
 
 	void FixedUpdate()
 	{
@@ -46,7 +48,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump)
 	{
-
 		if(gameState.isAlive){
 			// If crouching, check to see if the character can stand up
 			if(!crouch && anim.GetBool("Crouch"))

@@ -29,7 +29,7 @@ public class ButtonObjectBehaviour : ObjectsBehaviour {
 		rigidbody2D.isKinematic = true;
 	}
 	
-	void OnCollisionEnter2D(Collision2D collision) {
+	protected virtual void OnCollisionEnter2D(Collision2D collision) {
 		if (!IsPressed) {
 			if (currentState() == GameStateBehaviour.STATES.Sad) {
 				IsPressed = true;

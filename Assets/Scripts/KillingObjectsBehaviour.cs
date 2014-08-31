@@ -16,8 +16,7 @@ public class KillingObjectsBehaviour : MonoBehaviour {
 		}
 	}
 	
-	void OnCollisionEnter2D(Collision2D collision){
-		Debug.Log("collision");
+	void OnCollisionEnter2D(Collision2D collision){		
 		if(collision.gameObject.tag == "Player"){
 			gameManagerScript.isAlive = false;					
 			StartCoroutine(KillPlayer());
