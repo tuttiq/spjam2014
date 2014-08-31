@@ -20,7 +20,7 @@ public class ObjectsBehaviour : MonoBehaviour {
 		animator = gameObject.GetComponent<Animator>();
 	}
 	
-	protected void Update () {
+	protected virtual void Update () {
 		CheckIfStateChanged();
 	}
 	
