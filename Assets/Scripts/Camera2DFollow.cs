@@ -4,13 +4,12 @@ using System.Collections;
 public class Camera2DFollow : MonoBehaviour {
 	
 	public Transform target;
-	public Renderer ClampToEntity;
+	public Renderer ClampToGround;
 	public float damping = 1;
 	public float lookAheadFactor = 3;
 	public float lookAheadReturnSpeed = 0.5f;
 	public float lookAheadMoveThreshold = 0.1f;	
 	
-	Bounds clampBound;
 	float offsetZ;
 	Vector3 lastTargetPosition;
 	Vector3 currentVelocity;
@@ -18,12 +17,6 @@ public class Camera2DFollow : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		if (ClampToEntity != null) {
-			clampBound = ClampToEntity.bounds;
-			Debug.Log ("Bounds x: " + clampBound.min.x + " - " + clampBound.max.x + " y" + clampBound.min.y + " - " + clampBound.max.y);
-		}
-		
-		
 		lastTargetPosition = target.position;
 		offsetZ = (transform.position - target.position).z;
 		transform.parent = null;
@@ -45,7 +38,9 @@ public class Camera2DFollow : MonoBehaviour {
 		}
 		
 		Vector3 aheadTargetPos = target.position + lookAheadPos + Vector3.forward * offsetZ;
-		clampVector(ref aheadTargetPos);
+		
+		if (ClampToGround != null) clampVector(ref aheadTargetPos);
+		
 		Vector3 newPos = Vector3.SmoothDamp(transform.position, aheadTargetPos, ref currentVelocity, damping);
 		
 		transform.position = newPos;
@@ -54,8 +49,6 @@ public class Camera2DFollow : MonoBehaviour {
 	}
 	
 	void clampVector(ref Vector3 vector) {
-		
-		vector.x = Mathf.Clamp(vector.x, clampBound.min.x/2 + (camera.orthographicSize / 2f), clampBound.max.x/2 - (camera.orthographicSize / 2f));
-		vector.y = Mathf.Clamp(vector.y, clampBound.min.y + camera.orthographicSize, clampBound.max.y - camera.orthographicSize);
+		vector.y = Mathf.Max (ClampToGround.bounds.min.y + camera.orthographicSize, vector.y);
 	}
 }
