@@ -10,7 +10,8 @@ public class FallBridge : MonoBehaviour {
 	
 	}
 	void OnCollisionEnter2D(Collision2D collision) {
-		StartCoroutine("AsyncFall");
+		if(collision.gameObject.tag.Equals("Player"))
+			StartCoroutine("AsyncFall");
 	}
 
 	IEnumerator AsyncFall(){
