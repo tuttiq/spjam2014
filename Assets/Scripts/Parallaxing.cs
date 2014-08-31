@@ -23,11 +23,14 @@ public class Parallaxing : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		foreach (var b in Backgrounds) 
-		{
-			DoParallaxing (b);
+		if(Target.position != _prevPos)
+		{			
+			foreach (var b in Backgrounds) 
+			{
+				DoParallaxing (b);
+			}
+			_prevPos = Target.position;
 		}
-		_prevPos = Target.position;
 	}
 
 	void DoParallaxing (Transform target)
@@ -35,9 +38,9 @@ public class Parallaxing : MonoBehaviour {
 		var offsetParallaxing = -target.position.z;
 		var parallax = Vector3.Scale (_prevPos - Target.position, axisFactor) * offsetParallaxing;
 		target.position = Vector3.Lerp (target.position, target.position - parallax, smoothing * Time.deltaTime);
-		foreach(Transform child in target)
+		//foreach(Transform child in target)
 		{
-			DoParallaxing(child);
+		//	DoParallaxing(child);
 		}
 	}
 }

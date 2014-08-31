@@ -5,6 +5,7 @@ public class Camera2DFollow : MonoBehaviour {
 	
 	public Transform target;
 	public Renderer ClampToGround;
+	public Renderer ClampToCeiling;
 	public float damping = 1;
 	public float lookAheadFactor = 3;
 	public float lookAheadReturnSpeed = 0.5f;
@@ -39,7 +40,7 @@ public class Camera2DFollow : MonoBehaviour {
 		
 		Vector3 aheadTargetPos = target.position + lookAheadPos + Vector3.forward * offsetZ;
 		
-		if (ClampToGround != null) clampVector(ref aheadTargetPos);
+		clampVector(ref aheadTargetPos);
 		
 		Vector3 newPos = Vector3.SmoothDamp(transform.position, aheadTargetPos, ref currentVelocity, damping);
 		
@@ -49,6 +50,15 @@ public class Camera2DFollow : MonoBehaviour {
 	}
 	
 	void clampVector(ref Vector3 vector) {
-		vector.y = Mathf.Max (ClampToGround.bounds.min.y + camera.orthographicSize, vector.y);
+		float minY =
+			ClampToGround != null ?
+				ClampToGround.bounds.min.y + camera.orthographicSize :
+				vector.y;
+		float maxY =
+			ClampToCeiling != null ?
+				ClampToCeiling.bounds.max.y - camera.orthographicSize :
+				vector.y;
+				
+		vector.y = Mathf.Clamp(vector.y, minY, maxY);
 	}
 }

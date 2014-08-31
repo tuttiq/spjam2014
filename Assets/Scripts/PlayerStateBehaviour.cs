@@ -17,8 +17,12 @@ public class PlayerStateBehaviour : ObjectsBehaviour {
 		
 		Camera.main.GetComponent<Camera2DFollow>().target = currentPlayer.transform;
 		
-		Camera.main.audio.clip = happyMusic;
-		Camera.main.audio.Play();
+		var happyAudioSource = Camera.main.GetComponents<AudioSource>()[0];
+		var sadAudioSource = Camera.main.GetComponents<AudioSource>()[1];
+		happyAudioSource.mute = false;
+		sadAudioSource.mute = true;
+		//Camera.main.audio.clip = happyMusic;
+		//Camera.main.audio.Play();
 	}
 	
 	protected override void ChangedToSad() {
@@ -28,8 +32,12 @@ public class PlayerStateBehaviour : ObjectsBehaviour {
 		currentPlayer.transform.parent = transform;
 		
 		Camera.main.GetComponent<Camera2DFollow>().target = currentPlayer.transform;
-		
-		Camera.main.audio.clip = sadMusic;
-		Camera.main.audio.Play();
+
+		var happyAudioSource = Camera.main.GetComponents<AudioSource>()[0];
+		var sadAudioSource = Camera.main.GetComponents<AudioSource>()[1];
+		happyAudioSource.mute = true;
+		sadAudioSource.mute = false;
+		//Camera.main.audio.clip = sadMusic;
+		//Camera.main.audio.Play();
 	}
 }

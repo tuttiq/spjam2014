@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: f14a26b1b390bd945b67ead63a6d66dd
+guid: 760f552c90e667843b3a7102a348a961
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Happy_Pillar
-    21300002: Happy_pillar
+    21300000: foreground_peaple01
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -27,9 +26,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
