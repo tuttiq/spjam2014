@@ -6,6 +6,8 @@ public class GameStateBehaviour : MonoBehaviour {
 		Happy = 1,
 		Sad = -1
 	};
+	
+	public GameObject player;
 
 	float _switchTime = -100f;
 	//1 for Happy, -1 for Sad
@@ -13,7 +15,9 @@ public class GameStateBehaviour : MonoBehaviour {
 	
 	void Start () {
 		gameState = STATES.Happy;
+		
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
