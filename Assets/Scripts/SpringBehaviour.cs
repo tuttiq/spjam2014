@@ -36,7 +36,7 @@ public class SpringBehaviour : MonoBehaviour {
 			
 			transform.position = new Vector3(transform.position.x,
 			                                 spring.transform.position.y+yOffset,
-			                                 transform.position.z);	
+			                                 transform.position.z);
 		 }
 	}
 }
