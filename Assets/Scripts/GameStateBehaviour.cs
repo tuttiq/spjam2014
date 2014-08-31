@@ -7,7 +7,8 @@ public class GameStateBehaviour : MonoBehaviour {
 		Sad = -1
 	};
 	
-	public GameObject player;
+	//public GameObject player;
+	public bool isAlive;
 
 	float _switchTime = -100f;
 	//1 for Happy, -1 for Sad
@@ -15,7 +16,7 @@ public class GameStateBehaviour : MonoBehaviour {
 	
 	void Start () {
 		gameState = STATES.Happy;
-		
+		isAlive = true;		
 	}
 
 	
