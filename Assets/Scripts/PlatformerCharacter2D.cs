@@ -20,6 +20,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 	float ceilingRadius = .01f;							// Radius of the overlap circle to determine if the player can stand up
 	Animator anim;										// Reference to the player's animator component.
 
+	bool animaDeath;
+
 	private GameStateBehaviour gameState;
 	
 	
@@ -33,6 +35,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	void Start(){
 		gameState = GameObject.FindWithTag("GameManager").GetComponent<GameStateBehaviour>();
+		animaDeath = false;
 	}
 
 	void FixedUpdate()
@@ -89,7 +92,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 	            rigidbody2D.AddForce(new Vector2(0f, jumpForce));
 	        }
         }else{
-			anim.SetFloat("Speed", 0);
+				anim.SetFloat("Speed", 0);
+				anim.SetBool("Death", true);
         }
 	}
 
