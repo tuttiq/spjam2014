@@ -6,6 +6,9 @@ public class PlayerStateBehaviour : ObjectsBehaviour {
 	public GameObject happyPlayerPrefab;
 	public GameObject sadPlayerPrefab;	
 	
+	public AudioClip happyMusic;
+	public AudioClip sadMusic;
+	
 	protected void Update () {
 		CheckIfStateChanged();
 	}
@@ -29,6 +32,8 @@ public class PlayerStateBehaviour : ObjectsBehaviour {
 		currentPlayer = GameObject.Instantiate(happyPlayerPrefab, currentPlayer.transform.position, Quaternion.identity) as GameObject;
 		currentPlayer.transform.parent = transform;
 		Camera.main.GetComponent<Camera2DFollow>().target = currentPlayer.transform;
+		Camera.main.audio.clip = happyMusic;
+		Camera.main.audio.Play();
 	}
 	
 	protected override void ChangedToSad() {
@@ -37,5 +42,7 @@ public class PlayerStateBehaviour : ObjectsBehaviour {
 		currentPlayer = GameObject.Instantiate(sadPlayerPrefab, currentPlayer.transform.position, Quaternion.identity) as GameObject;
 		currentPlayer.transform.parent = transform;
 		Camera.main.GetComponent<Camera2DFollow>().target = currentPlayer.transform;
+		Camera.main.audio.clip = sadMusic;
+		Camera.main.audio.Play();
 	}
 }
