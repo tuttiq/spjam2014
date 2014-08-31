@@ -5,6 +5,7 @@ public class ButtonGaiolaSpawner : ButtonObjectBehaviour {
 
 	public GameObject gaiolaPrefab;
 	public Transform gaoilaSpawnPoint;
+	//Transform previousParent;
 
 	protected override void OnCollisionEnter2D(Collision2D collision) {		
 	}
@@ -13,6 +14,8 @@ public class ButtonGaiolaSpawner : ButtonObjectBehaviour {
 		if (!IsPressed) {
 			if (currentState() == GameStateBehaviour.STATES.Sad) {
 				IsPressed = true;
+				//previousParent = collision.transform.parent;
+				//collision.transform.parent = transform;
 				GameObject.Instantiate(gaiolaPrefab, new Vector3(gaoilaSpawnPoint.position.x, gaoilaSpawnPoint.position.y, 10 ), Quaternion.identity);
 			}
 		}
@@ -21,6 +24,7 @@ public class ButtonGaiolaSpawner : ButtonObjectBehaviour {
 	/*void OnCollisionExit2D(Collision2D collision) {
 		if (IsPressed) {
 			IsPressed = false;
+			//collision.transform.parent = previousParent;
 		}
 	}*/
 }

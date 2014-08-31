@@ -9,8 +9,16 @@ public class PlayerStateBehaviour : ObjectsBehaviour {
 	public AudioClip happyMusic;
 	public AudioClip sadMusic;
 	
+	//GameObject childObject;
+	
+	void start(){
+		base.Start();
+		//childObject = GameObject.FindWithTag("Player");
+	}
+	
 	protected void Update () {
 		CheckIfStateChanged();
+		//transform.position = childObject.transform.position;		
 	}
 	
 	protected virtual void CheckIfStateChanged () {
@@ -34,6 +42,7 @@ public class PlayerStateBehaviour : ObjectsBehaviour {
 		Camera.main.GetComponent<Camera2DFollow>().target = currentPlayer.transform;
 		Camera.main.audio.clip = happyMusic;
 		Camera.main.audio.Play();
+		//childObject = currentPlayer;
 	}
 	
 	protected override void ChangedToSad() {
@@ -44,5 +53,6 @@ public class PlayerStateBehaviour : ObjectsBehaviour {
 		Camera.main.GetComponent<Camera2DFollow>().target = currentPlayer.transform;
 		Camera.main.audio.clip = sadMusic;
 		Camera.main.audio.Play();
+		//childObject = currentPlayer;
 	}
 }

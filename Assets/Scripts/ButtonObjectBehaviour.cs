@@ -22,15 +22,17 @@ public class ButtonObjectBehaviour : ObjectsBehaviour {
 	}
 	
 	protected override void ChangedToHappy() {
-		rigidbody2D.isKinematic = false;
+		//rigidbody2D.isKinematic = false;
+		rigidbody2D.mass = 1000;
 	}
 	
 	protected override void ChangedToSad() {
-		rigidbody2D.isKinematic = true;
+		//rigidbody2D.isKinematic = true;
+		rigidbody2D.mass = 20;
 	}
 	
 	protected virtual void OnCollisionEnter2D(Collision2D collision) {
-		if (!IsPressed) {
+		if (collision.gameObject.tag == "Player" && !IsPressed) {
 			if (currentState() == GameStateBehaviour.STATES.Sad) {
 				IsPressed = true;
 			}
