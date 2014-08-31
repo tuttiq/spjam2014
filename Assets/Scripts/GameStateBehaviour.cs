@@ -7,6 +7,7 @@ public class GameStateBehaviour : MonoBehaviour {
 		Sad = -1
 	};
 
+	float _switchTime = -100f;
 	//1 for Happy, -1 for Sad
 	public static STATES gameState;	
 	
@@ -17,10 +18,15 @@ public class GameStateBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.C)){
-			if (gameState == STATES.Happy)
-				gameState = STATES.Sad;
-			else
-				gameState = STATES.Happy;
+			if(Time.time - _switchTime > 1.5f)
+			{				
+				if (gameState == STATES.Happy)
+					gameState = STATES.Sad;
+				else
+					gameState = STATES.Happy;
+				_switchTime = Time.time;
+			}
+
 
 			//Debug.Log("gameState: " + gameState);
 		}
