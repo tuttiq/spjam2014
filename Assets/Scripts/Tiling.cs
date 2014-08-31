@@ -75,7 +75,5 @@ public class Tiling : MonoBehaviour {
 			cloneTitle.GetComponent<Tiling>().HasLeftTile = true;
 		}
 
-
-
 	}
 }
