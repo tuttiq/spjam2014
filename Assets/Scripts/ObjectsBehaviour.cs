@@ -29,7 +29,7 @@ public class ObjectsBehaviour : MonoBehaviour {
 		actualState = GameStateBehaviour.gameState;
 		
 		if (actualState != previousState){
-			animator.SetTrigger("ChangeState");
+			if (animator != null) animator.SetTrigger("ChangeState");
 			if (actualState == GameStateBehaviour.STATES.Happy) {
 				ChangedToHappy();
 			} else {
