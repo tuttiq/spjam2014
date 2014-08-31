@@ -21,11 +21,11 @@ public class ObjectsBehaviour : MonoBehaviour {
 	}
 	
 	protected void Update () {
-		CheckIfStateChanged();
+		CheckIfStateChanged();		
 	}
 	
 	// Update is called once per frame
-	protected void CheckIfStateChanged () {
+	protected virtual void CheckIfStateChanged () {
 		actualState = GameStateBehaviour.gameState;
 		
 		if (actualState != previousState){

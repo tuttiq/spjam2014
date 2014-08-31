@@ -56,7 +56,10 @@ public class Tiling : MonoBehaviour {
 		newTilePos.x -= isLeftTile? Mathf.Abs( transform.localScale.x)*_spriteRenderer.sprite.bounds.size.x: -Mathf.Abs( transform.localScale.x)*_spriteRenderer.sprite.bounds.size.x;
 
 		Transform cloneTitle = Instantiate (transform, newTilePos, transform.rotation) as Transform;
-
+		//SpriteRenderer renderer = cloneTitle.GetComponent<SpriteRenderer>();
+		//cloneTitle.GetComponent<SpriteRenderer>().color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 255f);
+		
+		
 		cloneTitle.parent = transform.parent;
 		if (flipNewTitle) {
 			var scale = transform.localScale;

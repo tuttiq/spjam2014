@@ -31,7 +31,6 @@ public class GameStateBehaviour : MonoBehaviour {
 				_switchTime = Time.time;
 			}
 
-
 			//Debug.Log("gameState: " + gameState);
 		}
 		
